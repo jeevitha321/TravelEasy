@@ -14,7 +14,7 @@ import java.util.Objects;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/items")
+@RequestMapping("/api/item")
 @CrossOrigin
 public class ItemController {
 
