@@ -1,10 +1,10 @@
 FROM node:alpine AS development
 
-ENV NODE_ENV development
+ENV NODE_ENV=development
 
 WORKDIR /react-app
 
-COPY ./package*.json /react-app
+COPY ./package*.json /
 
 RUN npm install
 

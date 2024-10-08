@@ -1,0 +1,31 @@
+services:
+  backend:
+    build:
+      context: ./backend
+    ports:
+      - "8080:8080" 
+    volumes:
+      - ./backend:/app  # Mount the local backend directory to /app in the container
+      - ~/.m2:/root/.m2  # Optional: Cache Maven dependencies
+    networks:
+      - app-network
+    environment:
+      - SPRING_PROFILES_ACTIVE=dev
+    restart: always
+
+  frontend:
+    build:
+      context: ./frontend
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend:/react-app  # Mount the local frontend directory to /react-app in the container
+    networks:
+      - app-network
+    environment:
+      - NODE_ENV=development
+    restart: always
+
+networks:
+  app-network:
+    driver: bridge
