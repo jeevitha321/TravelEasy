@@ -25,3 +25,13 @@ docker-compose up -d && docker-compose logs -f
 
 Frontend: The frontend service will be accessible at http://localhost:3000.
 Backend: The backend service will be accessible at http://localhost:8080.
+
+Stop the Application:
+```
+Stop the Application:
+```
+
+For error /bin/sh: bad interpreter: Permission denied typically indicates a problem with the shebang line at the beginning of the script, file permissions. To fix run
+```
+chmod +x backend/mvnw
+```
