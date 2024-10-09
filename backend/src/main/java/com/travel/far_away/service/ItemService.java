@@ -24,8 +24,6 @@ public class ItemService {
         return itemRepository.findById(id);
     }
     public boolean existsItemById(String id) {
-        System.out.println("ID of the object "+ id);
-        System.out.println("existsItemById "+ itemRepository.existsById(id));
         return itemRepository.existsById(id);
     }
 

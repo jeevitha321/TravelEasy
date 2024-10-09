@@ -41,8 +41,6 @@ public class ItemController {
     @PutMapping("/update/{id}")
     public ResponseEntity<Item> updateItem(@PathVariable String id, @RequestBody Item itemDetails) {
         Optional<Item> item = itemService.getItemById(id);
-        System.out.println(id + " " + itemDetails.getId());
-        System.out.println(itemDetails);
         if(Objects.equals(itemDetails.getId(), id)) {
             if (item.isPresent()) {
                 Item updatedItem = item.get();
@@ -61,7 +59,6 @@ public class ItemController {
 
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> deleteItem(@PathVariable String id) {
-        System.out.println("ID of the object"+ id);
 
         if(!itemService.existsItemById(id)) {
             throw  new ResponseStatusException(HttpStatus.NOT_FOUND, "The id of the item does not exist");
