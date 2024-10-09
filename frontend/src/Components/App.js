@@ -66,12 +66,17 @@ export default function App() {
     }
   }
 
-  function handleSortChange(status){
+ async function handleSortChange(status){
     setSortStatus(status);
     console.log(status);
-    sortItems(status).then((response)=>{
-      if(response) setItems(response);
-    }).catch((err)=>console.log(err));
+    try{
+    const response = await sortItems(status);
+    console.log(response);
+    setItems(response);
+    }
+    catch(err){
+      console.log(err);
+    }
   }
 
   return (
