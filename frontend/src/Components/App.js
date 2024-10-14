@@ -5,6 +5,9 @@ import Stats from "./Footer";
 import PackingList from "./Packing-list";
 import {fetchData, createItem, deleteItem, updateItem, deleteAll, sortItems} from "../Service/item-service";
 import { SortStatus } from "../Enum/SortStatus";
+import LoginPage from "./Login";
+import RegistrationForm from "./Register";
+import { Routes,Route, Navigate } from "react-router-dom";
 
 export default function App() {
   const [sortStatus, setSortStatus] = useState(SortStatus.INPUT_ORDER);
@@ -31,6 +34,7 @@ export default function App() {
          }
       })
       .catch((err)=>console.log(err));
+
 
   }
 
@@ -80,19 +84,26 @@ export default function App() {
   }
 
   return (
-    <div className="app">
-      <Logo />
-      <Form onAddItems={handleAddItems} />
-      <PackingList
-        Items={Items}
-       onDeleteItem={handleDeleteItem}
-       onToggleItem={togglePacked}
-       onClearItem={clearItems}
-       onSortChange={handleSortChange}
-       Status = {sortStatus}
-      />
-      <Stats Items={Items} />
+    // <div className="app">
+    //   <Logo />
+    //   <Form onAddItems={handleAddItems} />
+    //   <PackingList
+    //     Items={Items}
+    //    onDeleteItem={handleDeleteItem}
+    //    onToggleItem={togglePacked}
+    //    onClearItem={clearItems}
+    //    onSortChange={handleSortChange}
+    //    Status = {sortStatus}
+    //   />
+    //   <Stats Items={Items} />
         
-    </div>
+    // </div>
+  
+      <Routes>
+        <Route path="/" element={<Navigate to="/login" />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/register" element={<LoginPage />} />
+      </Routes>
+
   );
 }
